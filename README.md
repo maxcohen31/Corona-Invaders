@@ -1,2 +1,6 @@
-# Corona-Invaders
-Space Invaders arcade game a little modified
+## Corona-Invaders
+
+# How to play
+python3 corona.py
+
+
