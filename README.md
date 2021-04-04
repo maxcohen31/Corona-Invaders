@@ -1,6 +1,6 @@
-## Corona-Invaders
+# Corona-Invaders
 
-# How to play
+## How to play
 python3 corona.py
 
 
