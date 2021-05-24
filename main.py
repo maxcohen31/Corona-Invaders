@@ -1,3 +1,6 @@
+# Corona Invaders
+# Written by Emanuele 
+
 import pygame
 import random
 import math
@@ -148,7 +151,7 @@ def boundaries():
     elif flag_cord_X >= 936:
         flag_cord_X = 936       
    
-# Game function
+# The game function does contain the flag and corona movements
 def game():    
     start = True 
     global syringe_cord_X, syringe_cord_Y, syringe_loaded
@@ -189,5 +192,5 @@ def game():
         pygame.display.update()   
         
         if __name__ == '__main__':
-    game()
+            game()
     
