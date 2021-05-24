@@ -148,40 +148,46 @@ def boundaries():
     elif flag_cord_X >= 936:
         flag_cord_X = 936       
    
-# Main loop
-    
-start = True
-while start:
-    
-    screen.fill((255, 255, 255))
-    clock.tick(fps)
-    screen.blit(bg, (0, 0))
-    pressed = pygame.key.get_pressed()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            start = False
-            pygame.quit()
-    if pressed[pygame.K_RIGHT]:
-        flag_cord_X += 3
-    if pressed[pygame.K_LEFT]:
-        flag_cord_X -= 3      
-    if pressed[pygame.K_SPACE]:
-        if syringe_loaded == 0:
-            syringe_cord_X = flag_cord_X    
-            syringe(flag_cord_X, syringe_cord_Y)
-            syringe_shot = mixer.Sound('laser.wav')
-            syringe_shot.play()
+# Game function
+def game():    
+    start = True 
+    global syringe_cord_X, syringe_cord_Y, syringe_loaded
+    global flag_cord_X, flag_cord_Y, flag_movementX 
+    while start:
 
-    if syringe_cord_Y <= 0:
-        syringe_cord_Y = flag_cord_Y
-        syringe_loaded = 0
-    elif syringe_loaded == 1:
-        syringe(syringe_cord_X, syringe_cord_Y)
-        syringe_cord_Y -= 9            
-    
+        screen.fill((255, 255, 255))
+        clock.tick(fps)
+        screen.blit(bg, (0, 0))
+        pressed = pygame.key.get_pressed()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                start = False
+                pygame.quit()
+        if pressed[pygame.K_RIGHT]:
+            flag_cord_X += 3
+        if pressed[pygame.K_LEFT]:
+            flag_cord_X -= 3      
+        if pressed[pygame.K_SPACE]:
+            if syringe_loaded == 0:
+                syringe_cord_X = flag_cord_X    
+                syringe(flag_cord_X, syringe_cord_Y)
+                syringe_shot = mixer.Sound('laser.wav')
+                syringe_shot.play()
 
-    flag(flag_cord_X, flag_cord_Y)
-    corona_movement()
-    boundaries()
-    destroyed(counter_X, counter_Y)
-    pygame.display.update()    
+        if syringe_cord_Y <= 0:
+            syringe_cord_Y = flag_cord_Y
+            syringe_loaded = 0
+        elif syringe_loaded == 1:
+            syringe(syringe_cord_X, syringe_cord_Y)
+            syringe_cord_Y -= 9            
+
+
+        flag(flag_cord_X, flag_cord_Y)
+        corona_movement()
+        boundaries()
+        destroyed(counter_X, counter_Y)
+        pygame.display.update()   
+        
+        if __name__ == '__main__':
+    game()
+    
