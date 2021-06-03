@@ -18,31 +18,31 @@ mixer.music.load('retro.wav') # music
 mixer.music.play(-1)
 
 #fps
-fps = 60
+fps = 60 
 clock = pygame.time.Clock()
 
 # Game over
-end_text = pygame.font.Font('freesansbold.ttf', 50)
+end_text = pygame.font.Font('freesansbold.ttf', 50) # Game over text
     
 # Making the flag
-flag_cord_X = 460
-flag_cord_Y = 510
-flag_movementX = 0
-flag_imagine = pygame.image.load('italy.png').convert_alpha()
+flag_cord_X = 460 # Flag X coordinate
+flag_cord_Y = 510 # Flag Y coordinate
+flag_movementX = 0 # Flag movement on X axis
+flag_imagine = pygame.image.load('italy.png').convert_alpha() # Flag picture
 
 # Making the syringe(bullet)
-syringe_cord_X = 0
-syringe_cord_Y = 510
-syringe_loaded = 0
-syringe_imagine = pygame.image.load('vaccine.png').convert_alpha()
+syringe_cord_X = 0 # syringe X coordinate
+syringe_cord_Y = 510 # Syringe X coordinate
+syringe_loaded = 0 # If 0 the syringe is not loaded
+syringe_imagine = pygame.image.load('vaccine.png').convert_alpha() # syringe picture
 
 # Making Coronavirus
-virus = 6
-virus_cord_X = []
-virus_cord_Y = []
-virus_movement_X = []
-virus_movement_Y = []
-corona_imagine = []
+virus = 6 # Number of enemies
+virus_cord_X = [] # # Corona X coordinate
+virus_cord_Y = [] # Corona Y coordinate
+virus_movement_X = [] # Corona movement on X axis
+virus_movement_Y = [] # Corona movement on Y axis
+corona_imagine = [] # Corona picture
 for x in range(virus):
     corona_imagine.append(pygame.image.load('coronavirus.png'))
     virus_cord_X.append(random.randint(0, 1000))
