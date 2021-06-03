@@ -64,18 +64,18 @@ def flag(Xcordinate, Ycordinate):
 # Fire the syringe
 def syringe(Xcordinate, Ycordinate):
     global syringe_loaded
-    syringe_loaded = 1
-    screen.blit(syringe_imagine, (Xcordinate + 15, Ycordinate + 10))
+    syringe_loaded = 1 # syringe loaded
+    screen.blit(syringe_imagine, (Xcordinate + 15, Ycordinate + 10)) # the syringe will be shot from the center of the flag 
 
 def strike(virus_cord_X, virus_cord_Y, syringe_cord_X, syringe_cord_Y):
-    two_points_distance = math.sqrt(math.pow(virus_cord_X - syringe_cord_X, 2) + (math.pow(virus_cord_Y - syringe_cord_Y, 2)))
+    two_points_distance = math.sqrt(math.pow(virus_cord_X - syringe_cord_X, 2) + (math.pow(virus_cord_Y - syringe_cord_Y, 2))) # Checking for collision
     if two_points_distance < 26:
         return True
     else:
         return False
 
 def game_over():
-    text = end_text.render('GAME OVER!', True, (255, 255, 255))
+    text = end_text.render('GAME OVER!', True, (255, 255, 255)) # Display the game over text
     screen.blit(text, (340, 260))
 
 # Showing the score
@@ -83,7 +83,7 @@ def destroyed(Xcordinate, Ycordinate):
     destroyed = score.render(f'destroyed: {str(counter)}', True, (255, 255, 255))
     screen.blit(destroyed, (Xcordinate, Ycordinate))    
         
-# Display the enemy    
+# Display the corona    
 def corona(Xcordinate, Ycordinate, x):
     screen.blit(corona_imagine[x], (Xcordinate, Ycordinate))    
 
@@ -95,12 +95,14 @@ def corona_movement():
     for x in range(virus):
         virus_cord_X[x] += virus_movement_X[x]
         
+        # If Corona touches you, you lose 
         if virus_cord_Y[x] > 465:
             for y in range(virus):
                 virus_cord_Y[y] = 1500
             game_over()
-            break    
+            break   
             
+        # Corona boundaries     
         if virus_cord_X[x] <= 0:
             virus_movement_X[x] = 5
             virus_cord_Y[x] += virus_movement_Y[x] 
@@ -111,6 +113,7 @@ def corona_movement():
         making_strike = strike(virus_cord_X[x], virus_cord_Y[x], syringe_cord_X, syringe_cord_Y)
         if making_strike:
             
+            # If the strike occurs the virus spawns randomly on the screen
             syringe_cord_Y = 510
             syringe_loaded = 0
             virus_cord_X[x] = random.randint(0, 936)
